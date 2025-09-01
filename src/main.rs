@@ -1,5 +1,6 @@
 use anyhow::Result;
 use clap::Parser;
+use cli_log::*;
 use crossterm::{
     event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode, poll},
     execute,
@@ -450,8 +451,7 @@ impl App {
 
     async fn confirm_password(&mut self) -> Result<()> {
         if let Some(operation) = self.pending_operation.clone() {
-            self.hide_password_input();
-
+            //self.hide_password_input(); # DO NOT DO THAT IMMEDIATELY, THE PASSWORD WOULD GET THROWN AWAY
             if self.dry_run {
                 // In dry-run mode, show confirmation after password input
                 let confirmation_message = match operation {
@@ -742,7 +742,9 @@ impl App {
         Ok(())
     }
 
-    async fn update_system(&self) -> Result<()> {
+    async fn update_system(&mut self) -> Result<()> {
+        debug!("Inputted PWD: {}", self.password_input);
+        debug!("Dry-run State: {}", self.dry_run);
         if self.dry_run {
             return Ok(());
         }
@@ -750,6 +752,7 @@ impl App {
         let mut cmd = AsyncCommand::new("sudo");
         cmd.args(["-S", "bootc", "update", "--apply"]);
         cmd.stdin(std::process::Stdio::piped());
+        cmd.stderr(std::process::Stdio::piped());
 
         let mut child = cmd.spawn()?;
 
@@ -758,6 +761,7 @@ impl App {
             stdin
                 .write_all(format!("{}\n", self.password_input).as_bytes())
                 .await?;
+            self.password_input.clear();
         }
 
         let output = child.wait_with_output().await?;
@@ -977,7 +981,7 @@ fn ui(f: &mut Frame, app: &App) {
         // Create bordered input box
         let input_block = Block::default()
             .borders(Borders::ALL)
-            .border_style(Style::default().fg(parse_color(&theme.colors.selected_fg)))
+            .border_style(Style::default().fg(parse_color(&theme.colors.primary)))
             .style(Style::default().bg(parse_color(&theme.colors.content_bg)));
 
         let input_area = input_block.inner(password_layout[1]);
@@ -1269,6 +1273,7 @@ fn ui(f: &mut Frame, app: &App) {
 #[tokio::main]
 async fn main() -> Result<()> {
     let cli = Cli::parse();
+    init_cli_log!();
 
     // Setup terminal
     enable_raw_mode()?;
