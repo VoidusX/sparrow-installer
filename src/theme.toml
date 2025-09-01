@@ -1,0 +1,75 @@
+# Sparrow Installer Theme Configuration
+# This file is compiled into the binary for theming support
+
+[colors]
+# Primary color scheme
+primary = "Gold"
+accent = "Yellow"
+
+# Background colors (dark theme)
+title_bg = "Black"
+main_bg = "Black"
+content_bg = "DarkGray"
+description_bg = "DarkGray"
+
+# Text colors
+title_fg = "Gold"
+main_fg = "White"
+content_fg = "White"
+description_fg = "White"
+
+# Interactive element colors
+selected_bg = "Gold"
+selected_fg = "Black"
+disabled_bg = "DarkGray"
+disabled_fg = "Gray"
+confirmation_bg = "DarkGray"
+confirmation_fg = "White"
+
+# Status message colors
+success_bg = "Green"
+success_fg = "Black"
+error_bg = "Red"
+error_fg = "White"
+fail_bg = "Red"
+fail_fg = "White"
+
+# Special indicators
+dry_run_fg = "Yellow"
+separator_fg = "Gold"
+
+[ui]
+# UI behavior settings
+title_height = 4
+description_height = 3
+show_separator = true
+separator_char = "─"
+
+# Icons and symbols
+dry_run_icon = "!"
+selection_prefix = "> "
+disabled_suffix = " *"
+
+[layout]
+# Layout configuration
+title_alignment = "Center"
+content_alignment = "Left"
+description_alignment = "Center"
+confirmation_alignment = "Center"
+
+# Spacing
+content_padding = 2
+
+[progress]
+# Progress bar visual styling
+bar_color = "Gold"
+bar_background = "DarkGray"
+border_color = "Yellow"
+border_active_color = "Yellow"
+spinner_color = "Gold"
+countdown_color = "Red"
+
+# Animation timing (in milliseconds)
+spinner_speed = 150
+progress_bar_speed = 80
+countdown_speed = 1000

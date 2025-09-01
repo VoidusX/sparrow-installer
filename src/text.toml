@@ -1,0 +1,110 @@
+# Sparrow Installer Text Configuration
+# This file contains all customizable text content used throughout the installer
+
+[messages]
+# Main menu messages
+welcome = "Before you can get started, a dotfiles configuration needs to be applied."
+confirmation_prompt = "Do you wish to continue?"
+processing = "The Installer is currently setting up your enviornment."
+
+# Dry-run testing messages
+dry_run_testing = "dry-run: active"
+dry_run_progress = "DRY-RUN: Simulating operation progress..."
+dry_run_default_install = "DRY-RUN: Would install default dotfiles from /usr/share/hypr/end-4_installer/setup.sh"
+dry_run_system_update = "DRY-RUN: Would run 'sudo bootc update --apply --quiet'"
+dry_run_complete = "DRY-RUN: Operation simulation complete"
+
+# Simulation content for dry-run mode
+dry_run_script_output = "Running end-4 setup script..."
+dry_run_update_output = "Checking for updates..."
+dry_run_misc_text = "You are running in dry-mode, nothing will happen."
+
+# Status messages
+operation_success = "Operation completed successfully!"
+operation_failed = "Operation failed"
+custom_disabled = "You cannot select a unimplemented option."
+option_disabled = "This option is currently unimplemented."
+
+# Help text
+navigation_help = "Use ↑/↓ to navigate, Enter to select, q to quit"
+confirmation_help = "Y/n - [Enter]/[Escape]"
+processing_help = "Please wait while the operation completes..."
+disabled_help = "This option is currently unimplemented."
+password_help = "Enter your sudo password to proceed with the installation."
+
+# Password authentication messages
+password_prompt = "Please provide your password for admin privilages to continue this action."
+password_instructions = "Press Tab to toggle visibility, Enter to confirm, Esc to cancel"
+password_empty_error = "Password cannot be empty"
+password_auth_failed = "Authentication failed. Please check your password."
+
+# Confirmation messages
+confirm_default_install = "You are about to start the setup with end-4 dotfiles.\nNOTICE: Some features may not be available due to atomic limits."
+confirm_system_update = "You are about to preform a system update.\nThe system will reboot if a a newer image is found and applied."
+
+# Progress indicators
+progress_installing = "Installing Dotfiles"
+progress_updating = "Updating Sparrow"
+progress_preparing = "Preparing operation"
+progress_finalizing = "Finalizing changes"
+progress_rebooting = "System will reboot."
+progress_poweroff = "System will power off."
+
+# Spinner characters for indeterminate progress
+spinner_chars = ["|", "/", "-", "\\"]
+
+[ui_text]
+# Application branding
+app_title = "Sparrow Installer"
+dry_run_indicator = "Dry-Run"
+
+# Option titles and descriptions
+default_title = "Default (end-4)"
+default_description = "Install the default dotfiles recommended by Sparrow."
+
+custom_title = "Custom"
+custom_description = "Install custom dotfiles (currently disabled)"
+
+update_title = "Update System"
+update_description = "Check for any latest images from sparrow to update and reboot."
+
+exit_title = "Exit Installer"
+exit_description = "Close the installer and power off the system."
+
+# Status prefixes
+success_prefix = "SUCCESS"
+error_prefix = "ERROR"
+fail_prefix = "FAIL"
+info_prefix = "INFO"
+warning_prefix = "WARNING"
+
+[errors]
+# Error messages
+script_not_found = "Setup script not found at /usr/share/hypr/end-4_installer/setup.sh"
+permission_denied = "Permission denied. Please check your privileges."
+command_failed = "Command execution failed"
+network_error = "Network connection error"
+disk_space_error = "Insufficient disk space"
+unknown_error = "An unknown error occurred"
+
+[dry_run]
+# Dry-run specific messages
+mode_active = "DRY RUN MODE - No commands will be executed"
+simulation_header = "=== DRY-RUN SIMULATION ==="
+simulation_footer = "=== SIMULATION COMPLETE ==="
+would_execute = "Would execute"
+would_install = "Would install"
+would_update = "Would update"
+would_create = "Would create"
+would_modify = "Would modify"
+
+[progress]
+# Progress bar configuration
+bar_fill_char = "█"
+bar_empty_char = "░"
+bar_width = 40
+countdown_seconds = 5
+
+# Progress types
+indeterminate_actions = ["install", "update", "prepare"]
+determinante_actions = ["reboot", "poweroff"]
